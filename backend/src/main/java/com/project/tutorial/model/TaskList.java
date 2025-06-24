@@ -24,7 +24,6 @@ public class TaskList {
     private String name;
 
     @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL)
-    @Column(nullable = false)
     @JsonIgnoreProperties("taskList")
     private List<Task> tasks;
 }
