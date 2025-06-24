@@ -1,5 +1,6 @@
 package com.project.tutorial.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,5 +29,6 @@ public class Task {
 
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
+    @JsonIgnoreProperties("tasks")
     private TaskList taskList;
 }
