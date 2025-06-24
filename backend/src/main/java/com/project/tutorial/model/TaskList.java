@@ -23,10 +23,6 @@ public class TaskList {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(nullable = false)
-    private User owner;
-
     @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL)
     @Column(nullable = false)
     @JsonIgnoreProperties("taskList")
