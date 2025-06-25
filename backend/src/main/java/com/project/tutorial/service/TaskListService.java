@@ -1,5 +1,6 @@
 package com.project.tutorial.service;
 
+import com.project.tutorial.DTO.TaskListDTO;
 import com.project.tutorial.model.TaskList;
 import com.project.tutorial.repository.TaskListRepository;
 import org.springframework.stereotype.Service;
@@ -27,18 +28,25 @@ public class TaskListService implements ITaskListService{
     }
 
     @Override
-    public TaskList createTaskList(TaskList taskList) {
-        if (taskList.getId() != null)
-            return null;
+    public TaskList createTaskList(TaskListDTO taskListDTO) {
+        TaskList taskList = new TaskList();
+        taskList.setId(null);
+        taskList.setName(taskListDTO.getName());
+        taskList.setTasks(null);
+
         return taskListRepository.save(taskList);
     }
 
     @Override
-    public TaskList updateTaskList(Long id, TaskList taskList) {
-        if (taskList.getId() != null)
-            return null;
+    public TaskList updateTaskList(Long id, TaskListDTO taskListDTO) {
         if (!taskListRepository.existsById(id))
             return null;
+
+        TaskList taskList = new TaskList();
+        taskList.setId(id);
+        taskList.setName(taskListDTO.getName());
+        taskList.setTasks(null);
+
         return taskListRepository.save(taskList);
     }
 

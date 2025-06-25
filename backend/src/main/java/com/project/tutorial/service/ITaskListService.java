@@ -1,5 +1,6 @@
 package com.project.tutorial.service;
 
+import com.project.tutorial.DTO.TaskListDTO;
 import com.project.tutorial.model.TaskList;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public interface ITaskListService {
     TaskList getTaskListById(Long id);
     List<TaskList> getAllTaskLists();
-    TaskList createTaskList(TaskList taskList);
-    TaskList updateTaskList(Long id, TaskList taskList);
+    TaskList createTaskList(TaskListDTO taskListDTO);
+    TaskList updateTaskList(Long id, TaskListDTO taskListDTO);
     void deleteTaskList(Long id);
 }

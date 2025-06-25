@@ -1,5 +1,6 @@
 package com.project.tutorial.controler;
 
+import com.project.tutorial.DTO.TaskListDTO;
 import com.project.tutorial.model.TaskList;
 import com.project.tutorial.service.TaskListService;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class TaskListControler {
     }
 
     @PostMapping
-    public ResponseEntity<TaskList> createTaskList(@RequestBody TaskList taskList) {
-        TaskList newTaskList = taskListService.createTaskList(taskList);
+    public ResponseEntity<TaskList> createTaskList(@RequestBody TaskListDTO taskListDTO) {
+        TaskList newTaskList = taskListService.createTaskList(taskListDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTaskList);
     }
 }
