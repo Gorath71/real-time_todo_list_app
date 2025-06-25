@@ -23,7 +23,7 @@ public class TaskList {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "taskList", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("taskList")
     private List<Task> tasks;
 }
