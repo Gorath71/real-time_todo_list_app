@@ -16,8 +16,5 @@ public class TaskDTO {
     private String description;
 
     @NotNull
-    private boolean completed;
-
-    @NotNull
     private Long taskListId;
 }
