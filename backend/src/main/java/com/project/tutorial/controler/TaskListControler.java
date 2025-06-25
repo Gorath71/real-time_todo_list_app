@@ -34,7 +34,21 @@ public class TaskListControler {
 
     @PostMapping
     public ResponseEntity<TaskList> createTaskList(@RequestBody TaskListDTO taskListDTO) {
-        TaskList newTaskList = taskListService.createTaskList(taskListDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newTaskList);
+        TaskList taskList = taskListService.createTaskList(taskListDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskList);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskList> updateTaskList(@RequestBody TaskListDTO taskListDTO, @PathVariable Long id) {
+        TaskList taskList = taskListService.updateTaskList(id, taskListDTO);
+        if (taskList == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(taskList);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<TaskList> deleteTaskList(@PathVariable Long id) {
+        taskListService.deleteTaskList(id);
+        return ResponseEntity.ok().build();
     }
 }
