@@ -1,4 +1,4 @@
-package com.project.tutorial.controler;
+package com.project.tutorial.controller;
 
 import com.project.tutorial.DTO.TaskListDTO;
 import com.project.tutorial.model.TaskList;
@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasklist")
-public class TaskListControler {
+public class TaskListController {
     private final TaskListService taskListService;
 
-    public TaskListControler(TaskListService taskListService) {
+    public TaskListController(TaskListService taskListService) {
         this.taskListService = taskListService;
     }
 
