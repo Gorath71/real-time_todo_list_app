@@ -6,10 +6,12 @@ import com.project.tutorial.model.TaskList;
 import com.project.tutorial.repository.TaskListRepository;
 import com.project.tutorial.repository.TaskRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TaskService implements ITaskService{
     private final TaskRepository taskRepository;
     private final TaskListRepository taskListRepository;
