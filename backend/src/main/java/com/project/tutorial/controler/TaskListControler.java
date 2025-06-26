@@ -21,8 +21,6 @@ public class TaskListControler {
     @GetMapping("/{id}")
     public ResponseEntity<TaskList> getTaskList(@PathVariable Long id) {
         TaskList taskList = taskListService.getTaskListById(id);
-        if (taskList == null)
-            return ResponseEntity.notFound().build();
         return ResponseEntity.ok(taskList);
     }
 
@@ -41,8 +39,6 @@ public class TaskListControler {
     @PutMapping("/{id}")
     public ResponseEntity<TaskList> updateTaskList(@RequestBody TaskListDTO taskListDTO, @PathVariable Long id) {
         TaskList taskList = taskListService.updateTaskList(id, taskListDTO);
-        if (taskList == null)
-            return ResponseEntity.notFound().build();
         return ResponseEntity.ok(taskList);
     }
 
