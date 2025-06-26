@@ -3,6 +3,7 @@ package com.project.tutorial.service;
 import com.project.tutorial.DTO.TaskListDTO;
 import com.project.tutorial.model.TaskList;
 import com.project.tutorial.repository.TaskListRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class TaskListService implements ITaskListService{
     @Override
     public TaskList getTaskListById(Long id) {
         Optional<TaskList> taskListOptional = taskListRepository.findById(id);
-        return taskListOptional.orElse(null);
+        return taskListOptional.orElseThrow(()-> new EntityNotFoundException("TaskList with id " + id + " not found"));
     }
 
     @Override
@@ -40,7 +41,7 @@ public class TaskListService implements ITaskListService{
     @Override
     public TaskList updateTaskList(Long id, TaskListDTO taskListDTO) {
         if (!taskListRepository.existsById(id))
-            return null;
+            throw new EntityNotFoundException("Task list with id " + id + " not found");
 
         TaskList taskList = new TaskList();
         taskList.setId(id);
@@ -52,6 +53,8 @@ public class TaskListService implements ITaskListService{
 
     @Override
     public void deleteTaskList(Long id) {
+        if (!taskListRepository.existsById(id))
+            throw new EntityNotFoundException("Task list with id " + id + " not found");
         taskListRepository.deleteById(id);
     }
 }
